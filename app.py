@@ -1,11 +1,5 @@
 from flask import Flask, request, render_template, redirect, session, jsonify, flash
-from forex_python.converter import CurrencyRates, CurrencyCodes
-from currency import CurrencyChecks
-
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "abc123"
-c = CurrencyRates(force_decimal=False)
-cc = CurrencyCodes()
 
 
 @app.route("/",)
