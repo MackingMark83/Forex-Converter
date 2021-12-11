@@ -4,8 +4,8 @@ from flask import session
 from forex_python.converter import CurrencyRates, CurrencyCodes
 from currency import CurrencyChecks
 
-c = CurrencyRates(force_decimal=False)
-cc = CurrencyCodes()
+CurrencyRates = CurrencyRates(force_decimal=False)
+CurrencyCodes = CurrencyCodes()
 
 
 class FlaskTests(TestCase):
@@ -23,7 +23,7 @@ class FlaskTests(TestCase):
 
     def test_dollar_conversion(self):
         with self.client as client:
-            self.assertEqual(c.convert("USD", "USD", 1), 1)
-            self.assertEqual(c.convert("GBP", "GBP", 1), 1)
-            self.assertEqual(c.convert("JPY", "JPY", 1), 1)
+            self.assertEqual(CurrencyRates.convert("USD", "USD", 1), 1)
+            self.assertEqual(CurrencyRates.convert("GBP", "GBP", 1), 1)
+            self.assertEqual(CurrencyRates.convert("JPY", "JPY", 1), 1)
 

@@ -1,19 +1,19 @@
 from forex_python.converter import CurrencyRates, CurrencyCodes
 
-c = CurrencyRates(force_decimal=False)
-cc = CurrencyCodes()
+CurrencyRates = CurrencyRates(force_decimal=False)
+CurrencyCodes = CurrencyCodes()
 
 
 class CurrencyChecks:
     def check_currency_and_amount(self, input_currency, output_currency, amount):
 
         try:
-            input_symbol = cc.get_symbol(input_currency)
-            output_symbol = cc.get_symbol(output_currency)
-            input_name = cc.get_currency_name(input_currency)
-            output_name = cc.get_currency_name(output_currency)
+            input_symbol = CurrencyCodes.get_symbol(input_currency)
+            output_symbol = CurrencyCodes.get_symbol(output_currency)
+            input_name = CurrencyCodes.get_currency_name(input_currency)
+            output_name = CurrencyCodes.get_currency_name(output_currency)
 
-            converted = c.convert(input_currency, output_currency, amount)
+            converted = CurrencyRates.convert(input_currency, output_currency, amount)
             converted = format(converted, ".2f")
             amount = format(amount, ".2f")
             return render_template(
